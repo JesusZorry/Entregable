@@ -247,7 +247,6 @@ function levantaRaton(){
     if (estoyDibujando= true){
      ctx2.closePath();
      estoyDibujando = false;
-     console.log('suelta');
      }
 
 }
@@ -255,17 +254,14 @@ function pulsaRaton(event){
     estoyDibujando=true;
      ctx2.beginPath();
      ctx2.moveTo(event.clientX-350,event.clientY);
-     console.log('valida');
 
 }
 function escribir(){
   herramienta="lapiz";
-  console.log("escribe");
 
 }
 function borrar(){
   herramienta="goma";
-  console.log("No escribe");
 
 }
 function nuevolienzo(){
