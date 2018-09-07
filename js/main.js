@@ -8,12 +8,10 @@ var canvas = document.getElementById("canvas");
 canvas.addEventListener('mousedown',pulsaRaton,false);
 canvas.addEventListener('mousemove',mueveRaton,false);
 canvas.addEventListener('mouseup',levantaRaton,false);
-//var ctx = canvas.getContext("2d");
 var ctx2 = canvas.getContext("2d");
 var imageOrig = document.getElementById("original");
 var width = 760;
 var height = 550;
-//var imageData;
 var imageData2;
 var r = 0;
 var g = 0;
@@ -36,9 +34,7 @@ function mostrarImagen(e){
   image1.src = URL.createObjectURL(e.target.files[0]);
   imageOrig.src = image1.src;
   image1.onload = function(){
-    //drawImage(image1, 0, 0, width, height);
     ctx2.drawImage(image1, 0, 0, width, height);
-    //imageData = //getImageData(0, 0, width, height);
     imageData2 = ctx2.getImageData(0, 0, width, height);
   }
 }
@@ -88,9 +84,7 @@ function cargarImagen(){
   var image1 = new Image();
   image1.src="Imagenes/japish.jpg";
   image1.onload = function(){
-    //drawImage(image1, 0, 0, width, height);
     ctx2.drawImage(image1, 0, 0, width, height);
-  //  imageData = //getImageData(0, 0, width, height);
     imageData2 = ctx2.getImageData(0, 0, width, height);
   }
 
@@ -260,12 +254,14 @@ function pulsaRaton(event){
 
 
 function escribir(){
+  getContext();
   ctx2.strokeStyle='#00000';
   ctx2.linewidth=15;
   console.log("escribe");
 
 }
 function borrar(){
+  getContext();
   console.log("No escribe");
   ctx2.strokeStyle='#ffffff';
   ctx2.lineWidth = 30;
