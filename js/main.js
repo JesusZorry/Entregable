@@ -17,7 +17,8 @@ var r = 0;
 var g = 0;
 var b = 0;
 var estoyDibujando=false;
-var estoyBorrando = false;
+var herramienta="lapiz";
+
 
 window.onload = function(){
   var input = document.getElementById('file-input');
@@ -129,7 +130,7 @@ function binarizacion(){
   ctx2.putImageData(imageData2, 0, 0);
 }
 function original(){
-  ctx2.putImageData(imageData, 0, 0);
+  ctx2.putImageData(imageData2, 0, 0);
 }
 function cambioelsig(x,y){
   if (y < height){
@@ -229,6 +230,14 @@ function guardarImagen() {
 
 function mueveRaton(event){
      if(estoyDibujando){
+        if (herramienta == "goma"){
+          ctx2.strokeStyle='#FFFFFF';
+          ctx2.lineWidth = 30;
+        }
+        if (herramienta == "lapiz"){
+          ctx2.strokeStyle= '#000000'
+          ctx2.lineWidth= 1;
+        }
          ctx2.lineTo(event.clientX-350,event.clientY);
          ctx2.stroke();
      }
@@ -239,9 +248,7 @@ function levantaRaton(){
      ctx2.closePath();
      estoyDibujando = false;
      console.log('suelta');
-     ctx2.strokeStyle='#00000';
-     ctx2.linewidth=15;
-   }
+     }
 
 }
 function pulsaRaton(event){
@@ -251,20 +258,15 @@ function pulsaRaton(event){
      console.log('valida');
 
 }
-
-
 function escribir(){
-  getContext();
-  ctx2.strokeStyle='#00000';
-  ctx2.linewidth=15;
+  herramienta="lapiz";
   console.log("escribe");
 
 }
 function borrar(){
-  getContext();
+  herramienta="goma";
   console.log("No escribe");
-  ctx2.strokeStyle='#ffffff';
-  ctx2.lineWidth = 30;
+
 }
 function nuevolienzo(){
    //clearRect(0, 0, canvas.width, canvas.height);
@@ -272,7 +274,6 @@ function nuevolienzo(){
 
 
 }
-
 var bynBtm = document.getElementById('blancoynegro');
 bynBtm.addEventListener('click',blancoYNegro);
 var imgdefBtm = document.getElementById('imgdef');
