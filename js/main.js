@@ -149,7 +149,7 @@ function cambioelsigx(x,y){
   if (x < width){
     getPixel(x,y);
     var color = Math.round((r+g+b)/3);
-    var colorsig =  Math.round((getRojo(x+1,y+1)+ getVerde(x+1,y)+ getAzul(x+1,y))/3);
+    var colorsig =  Math.round((getRojo(x+1,)+ getVerde(x+1,y)+ getAzul(x+1,y))/3);
     if ((color -colorsig) < 10){
       return false;
     }
